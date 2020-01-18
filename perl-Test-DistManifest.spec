@@ -1,6 +1,6 @@
 Name:           perl-Test-DistManifest
 Version:        1.012
-Release:        4%{?dist}
+Release:        6%{?dist}
 Summary:        Author test that validates a package MANIFEST
 License:        GPL+ or Artistic
 Group:          Development/Libraries
@@ -50,7 +50,7 @@ find $RPM_BUILD_ROOT -depth -type d -exec rmdir {} 2>/dev/null \;
 
 %check
 # post-install rpmbuild scripts contaminates RPM_BUILD_ROOT (bug #672538).
-rm debug*.list
+rm *.list
 make test
 
 %files
@@ -59,6 +59,12 @@ make test
 %{_mandir}/man3/*
 
 %changelog
+* Tue Jan  7 2014 Petr Pisar <ppisar@redhat.com> - 1.012-6
+- Remove more debuginfo remnants (bug #1048891)
+
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 1.012-5
+- Mass rebuild 2013-12-27
+
 * Tue Nov 20 2012 Marcela Mašláňová <mmaslano@redhat.com> - 1.012-4
 - Remove doubled requires
 
